@@ -7,6 +7,8 @@ import Upload from "./pages/Upload"
 import Navbar from "./components/Navbar"
 import Collections from "./pages/Collections"
 import CollectionsDetails from "./pages/CollectionsDetails"
+import Register from "./pages/Register"
+import Login from "./pages/Login"
 
 function App() {
 
@@ -15,11 +17,13 @@ function App() {
       <Router>
         <Navbar />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/photo/:id" element={<PhotoDetails />} />
           <Route path="/upload" element={<Upload />} />
           <Route path="/collections" element={<Collections />} />
           <Route path="/collections/:id" element={<CollectionsDetails />} />
+          <Route path="/register" element={<Register/>}/>
+          <Route path="/login" element={<Login/>} />
         </Routes>
       </Router>
     </div>
