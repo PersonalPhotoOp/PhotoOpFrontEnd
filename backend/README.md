@@ -10,3 +10,4 @@ Currently, two official plugins are available:
 =======
 # BadAtMakingNames
 >>>>>>> backend/main
+npm i cloudinary, bcrypt, axios, mysql2, cors,express, dotenv

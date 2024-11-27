@@ -9,11 +9,14 @@ import Collections from "./pages/Collections"
 import CollectionsDetails from "./pages/CollectionsDetails"
 import Register from "./pages/Register"
 import Login from "./pages/Login"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
 
   return (
     <div className="app-body">
+      <ToastContainer/>
       <Router>
         <Navbar />
         <Routes>
@@ -22,8 +25,8 @@ function App() {
           <Route path="/upload" element={<Upload />} />
           <Route path="/collections" element={<Collections />} />
           <Route path="/collections/:id" element={<CollectionsDetails />} />
-          <Route path="/register" element={<Register/>}/>
-          <Route path="/login" element={<Login/>} />
+          <Route path="/api/users/register" element={<Register/>}/>
+          <Route path="/api/users/login" element={<Login/>} />
         </Routes>
       </Router>
     </div>

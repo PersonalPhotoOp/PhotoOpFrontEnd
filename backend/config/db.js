@@ -17,14 +17,14 @@ db.connect((err) => {
   console.log('Connected to database.');
 
   // Initialize database schema
-  const sql = fs.readFileSync('CloudLensPhotographyApp.sql', 'utf8');
-  db.query(sql, (err, results) => {
-    if (err) {
-      console.error('Failed to initialize database schema: ' + err.stack);
-      return;
-    }
-    console.log('Database schema initialized.');
-  });
+  // const sql = fs.readFileSync('CloudLensPhotographyApp.sql', 'utf8');
+  // db.query(sql, (err, results) => {
+  //   if (err) {
+  //     console.error('Failed to initialize database schema: ' + err.stack);
+  //     return;
+  //   }
+  //   console.log('Database schema initialized.');
+  // });
 });
 
 module.exports = db;
