@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import "../cssFiles/Login.css"
 
 const Login = () => {
@@ -63,6 +63,7 @@ const Login = () => {
 
           <button type="submit">Login</button>
         </form>
+        <p>Don't have an account?</p><Link to="/Register">Sign Up for an account</Link>
       </div>
     </div>
   );

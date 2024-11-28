@@ -23,14 +23,14 @@ const Register = () => {
     }
 
     try {
-      const response = await axios.post('http://localhost:5000/api/users/register', { username, password });
+      const response = await axios.post('http://localhost:5000/register', { username, password });
 
       if (response.status === 201) {
         toast.success('Registration successful!');
         setUsername('');
         setPassword('');
         setConfirmPassword('');
-        navigate('/api/users/login');
+        navigate('/login');
       }
     } catch (error) {
       console.error('Error during registration:', error);
