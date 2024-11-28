@@ -12,7 +12,7 @@ app.use(cors())
 
 
 // Use user routes
-app.use('/api/users', userRoutes); // Set the base path for user routes
+app.use('/', userRoutes); // Set the base path for user routes
 
 // Simple route
 app.get('/', (req, res) => {

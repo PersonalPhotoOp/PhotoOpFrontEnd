@@ -1,0 +1,70 @@
+.profile-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #121212; /* Black background for the app */
+    padding: 20px;
+  }
+  
+  .profile-box {
+    background-color: #2c2c2c; /* Dark gray box background */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Soft shadow for the box */
+    padding: 30px 40px;
+    text-align: center;
+    color: #ffffff; /* White text */
+    width: 100%;
+    max-width: 400px; /* Restrict box width */
+  }
+  
+  .profile-box h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #f5f5f5; /* Slightly lighter white for the title */
+  }
+  
+  .profile-box p {
+    font-size: 18px;
+    margin: 10px 0;
+  }
+  
+  .profile-box strong {
+    color: #d1d1d1; /* Lighter gray for labels */
+  }
+  
+  .logout-button {
+    background-color: #ff4444; /* Bright red for the logout button */
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+  }
+  
+  .logout-button:hover {
+    background-color: #cc0000; /* Darker red on hover */
+  }
+  
+  @media (max-width: 480px) {
+    .profile-box {
+      padding: 20px;
+    }
+  
+    .profile-box h1 {
+      font-size: 20px;
+    }
+  
+    .profile-box p {
+      font-size: 16px;
+    }
+  
+    .logout-button {
+      font-size: 14px;
+      padding: 8px 16px;
+    }
+  }
+  

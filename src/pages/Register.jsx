@@ -3,13 +3,13 @@ import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
+import "../cssFiles/Register.css"
 
 const Register = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-
-  const navigate = useNavigate()
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -23,58 +23,53 @@ const Register = () => {
     }
 
     try {
-      // Replace with your backend URL
-      const response = await axios.post("http://localhost:5000/api/users/register", { 
-        username, 
-        password 
-      });
+      const response = await axios.post('http://localhost:5000/api/users/register', { username, password });
 
       if (response.status === 201) {
-        toast.success("Registration successful!");
-        // Reset form after successful registration
-        setUsername("");
-        setPassword("");
-        setConfirmPassword("");
-        navigate("/api/users/login");
+        toast.success('Registration successful!');
+        setUsername('');
+        setPassword('');
+        setConfirmPassword('');
+        navigate('/api/users/login');
       }
     } catch (error) {
-      console.error("Error during registration:", error);
-      // Handle specific backend errors if available
-      const errorMessage = error.response?.data?.message || "An error occurred during registration.";
+      console.error('Error during registration:', error);
+      const errorMessage = error.response?.data?.message || 'An error occurred during registration.';
       toast.error(errorMessage);
     }
   };
 
   return (
-    <div>
-      <ToastContainer /> {/* Toast notification container */}
-      <div className='header-div'>
+    <div className="register-container">
+      <ToastContainer />
+      <div className="register-box">
         <h2>Register</h2>
-      </div>
-      <div className='form-div'>
-        <form onSubmit={handleSubmit}>
-          <label>Username </label>
-          <input 
-            value={username} 
-            onChange={e => setUsername(e.target.value)} 
-            type="email" 
-            placeholder='Enter username' 
+        <form onSubmit={handleSubmit} className="register-form">
+          <label htmlFor="username">Username</label>
+          <input
+            id="username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            type="email"
+            placeholder="Enter username"
           />
 
-          <label>Password </label>
-          <input 
-            value={password} 
-            onChange={e => setPassword(e.target.value)} 
-            type="password" 
-            placeholder='Enter password' 
+          <label htmlFor="password">Password</label>
+          <input
+            id="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            type="password"
+            placeholder="Enter password"
           />
 
-          <label>Confirm Password </label>
-          <input 
-            value={confirmPassword} 
-            onChange={e => setConfirmPassword(e.target.value)} 
-            type="password" 
-            placeholder='Confirm password' 
+          <label htmlFor="confirmPassword">Confirm Password</label>
+          <input
+            id="confirmPassword"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            type="password"
+            placeholder="Confirm password"
           />
 
           <button type="submit">Register</button>

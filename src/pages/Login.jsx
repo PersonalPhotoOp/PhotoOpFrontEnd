@@ -3,29 +3,32 @@ import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
-
+import "../cssFiles/Login.css"
 
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!username || !password) {
-      toast.error('All fields required');
-      return; // Prevent further execution
+      toast.error('All fields are required');
+      return;
     }
 
     try {
-      const response = await axios.post('http://localhost:5000/api/users/login', { username, password });
+      const response = await axios.post('http://localhost:5000/login', { username, password });
 
-      if (response.status === 200) { // Check for a successful response
-        toast.success('Logged in successfully');
+      if (response.status === 200) {
+        toast.success(response.data.message);
+        localStorage.setItem('userToken', response.data.token);
         setUsername('');
         setPassword('');
-        navigate("/home");
+        setTimeout(() => {
+          navigate('/home');
+        }, 800);
       }
     } catch (error) {
       console.error(error);
@@ -35,15 +38,14 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <ToastContainer /> {/* Ensure the ToastContainer is rendered */}
-      <div className="header-div">
+    <div className="login-container">
+      <ToastContainer />
+      <div className="login-box">
         <h2>Login</h2>
-      </div>
-      <div className="form-div">
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="login-form">
           <label htmlFor="username">Username</label>
           <input
+            id="username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             type="text"
@@ -52,6 +54,7 @@ const Login = () => {
 
           <label htmlFor="password">Password</label>
           <input
+            id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             type="password"

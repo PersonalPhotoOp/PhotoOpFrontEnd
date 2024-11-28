@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/User');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken')
 
 // Register User
 router.post('/register', async (req, res) => {
@@ -24,6 +25,7 @@ router.post('/register', async (req, res) => {
   });
 });
 
+//Login route
 router.post("/login", async(req, res)=>{
   console.log(req.body)
   const{username, password}=req.body;
@@ -42,6 +44,7 @@ router.post("/login", async(req, res)=>{
     }
 
     const user = result[0];
+    // console.log(user)
 
     // Compare the provided password with the stored hashed password
     const isMatch = await bcrypt.compare(password, user.password_hash);
@@ -51,8 +54,19 @@ router.post("/login", async(req, res)=>{
     }
 
     // Authentication successful
-    res.status(200).json({ message: 'Login successful', user: { id: user.id, username: user.username } });
+    const token =await  jwt.sign(user, 'userToken')
+    console.log(user.user_id)
+    res.status(200).json({ message: 'Login successful', user: { id: user.id, username: user.username }, token: token });
   });
+
+
+//Get user route
+router.post("/get-user", async(req, res)=>{
+  const {token}=req.body
+  // console.log(token)
+  const verifyToken = jwt.verify(token, 'userToken')
+  res.send(verifyToken)
+  })
 
 });
 
