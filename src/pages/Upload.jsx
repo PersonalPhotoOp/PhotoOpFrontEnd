@@ -27,7 +27,7 @@ const Upload = () => {
 
     try {
       // Replace with backend API endpoint
-      const response = await axios.post("http://localhost:5173/upload", formData)
+      const response = await axios.post("http://localhost:5000/images/upload", formData)
       setUploadStatus("Photo uploaded successfully!")
       setFile(null)
       setTitle("")

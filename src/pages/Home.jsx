@@ -6,6 +6,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import axios from "axios"
 
 const Home = () => {
+    const baseUrl = "http://localhost:5000";
     const [photos, setPhotos] = useState([])
     const [userData, setUserData]= useState(null)
     const navigate = useNavigate();
@@ -17,6 +18,7 @@ const Home = () => {
         const fetchPhotos = async () => {
             // const response = await axios.get("https://localhost:5173/photos")
             const response = await axios.get("https://jsonplaceholder.typicode.com/photos")
+            // const response = await axios.get(`${baseUrl}/photos`);
             setPhotos(response.data)
             
         }

@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const Collections = () => {
+  const baseUrl = "http://localhost:5000";
   const [collections, setCollections] = useState([]);
   const [error, setError] = useState(null); // For handling errors during fetch
 
   useEffect(() => {
     const fetchCollections = async () => {
       try {
+        // const response = await fetch(`${baseUrl}/collections?userId=1`);
         const response = await fetch("https://jsonplaceholder.typicode.com/albums");
         if (!response.ok) {
           throw new Error("Error fetching collections");
